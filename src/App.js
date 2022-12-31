@@ -1,8 +1,12 @@
 import {Text, SafeAreaView, Button} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 export default function App() {
   const [number, setNumber] = useState(0);
+
+  useEffect(() => {
+    console.log('number updated: ', number);
+  }, [number]);
 
   return (
     <SafeAreaView>
