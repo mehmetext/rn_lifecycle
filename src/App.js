@@ -8,6 +8,10 @@ export default function App() {
     console.log('number updated: ', number);
   }, [number]);
 
+  useEffect(() => {
+    console.log('Mounting...');
+  }, []);
+
   return (
     <SafeAreaView>
       <Text>Number: {number}</Text>
