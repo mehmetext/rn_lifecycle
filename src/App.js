@@ -1,12 +1,8 @@
-import {Text, SafeAreaView, Button} from 'react-native';
+import {Text, SafeAreaView, Button, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
 
 export default function App() {
-  const [number, setNumber] = useState(0);
-
-  useEffect(() => {
-    console.log('number updated: ', number);
-  }, [number]);
+  const [helloFlag, setHelloFlag] = useState(false);
 
   useEffect(() => {
     console.log('Mounting...');
@@ -14,13 +10,29 @@ export default function App() {
 
   return (
     <SafeAreaView>
-      <Text>Number: {number}</Text>
       <Button
         title="Up"
         onPress={() => {
-          setNumber(number + 1);
+          setHelloFlag(!helloFlag);
         }}
       />
+      {helloFlag && <Hello />}
     </SafeAreaView>
+  );
+}
+
+function Hello() {
+  useEffect(() => {
+    console.log('I came!');
+
+    return () => {
+      console.log('I went!');
+    };
+  }, []);
+
+  return (
+    <View>
+      <Text>Hello!</Text>
+    </View>
   );
 }
